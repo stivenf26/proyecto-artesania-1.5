@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilobasco: El Alma del Barro y sus Miniaturas | El Salvador</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ========================================================
+         CÓDIGO CSS CON COLORES LLAMATIVOS Y EFECTOS
+         ======================================================== -->
+    <style>
+        :root {
+            --bg-canvas: #070913;
+            --card-glass: rgba(18, 22, 43, 0.72);
+            --neon-cyan: #00f0ff;
+            --neon-magenta: #ff007f;
+            --neon-gold: #ffbe0b;
+            --neon-orange: #ff5400;
+            --neon-emerald: #05ffa1;
+            --text-light: #f1f5f9;
+            --text-dim: #94a3b8;
+            --border-highlight: rgba(0, 240, 255, 0.28);
+            --blur: blur(16px);
+            --gradient-accent: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta), var(--neon-gold));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 0, 127, 0.16) 0%, transparent 40%),
+                radial-gradient(circle at 85% 25%, rgba(0, 240, 255, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 50% 70%, rgba(255, 190, 11, 0.12) 0%, transparent 55%),
+                radial-gradient(circle at 80% 90%, rgba(5, 255, 161, 0.14) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 1.5px;
+        }
+
+        /* Luces de ambiente flotantes */
+        .ambient-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
+            animation: orbFloat 14s infinite alternate ease-in-out;
+        }
+        .glow-1 { top: 10%; left: -100px; background: var(--neon-magenta); }
+        .glow-2 { bottom: 20%; right: -100px; background: var(--neon-cyan); animation-duration: 18s; }
+
+        @keyframes orbFloat {
+            0% { transform: translateY(0) scale(0.9); }
+            100% { transform: translateY(80px) scale(1.2); }
+        }
+
+        /* Barra de Navegación */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: var(--blur);
+            background: rgba(7, 9, 19, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .brand i {
+            color: var(--neon-gold);
+            font-size: 1.6rem;
+            filter: drop-shadow(0 0 8px var(--neon-gold));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .city-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-emerald);
+            color: var(--neon-emerald);
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 0 25px rgba(5, 255, 161, 0.35);
+            backdrop-filter: var(--blur);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6.5vw, 5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 10%, var(--neon-cyan) 45%, var(--neon-magenta) 80%, var(--neon-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 50px rgba(0, 240, 255, 0.35);
+            max-width: 1000px;
+        }
+
+        .hero-desc {
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+            color: var(--text-dim);
+            max-width: 780px;
+            margin-bottom: 2.8rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-neon-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.1rem 2.6rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--neon-magenta), var(--neon-orange));
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.55);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+        }
+
+        .btn-neon-main:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.9);
+        }
+
+        .btn-neon-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.1rem 2.2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            backdrop-filter: var(--blur);
+            transition: all 0.3s;
+        }
+
+        .btn-neon-secondary:hover {
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Módulo interactivo de La Sorpresa */
+        .interactive-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1050px;
+            margin: 1rem auto 5rem;
+            padding: 0 1.5rem;
+        }
+
+        .surprise-card {
+            background: linear-gradient(145deg, rgba(25, 18, 48, 0.8), rgba(12, 18, 38, 0.8));
+            border: 1px solid rgba(255, 190, 11, 0.4);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 190, 11, 0.2);
+            backdrop-filter: var(--blur);
+        }
+
+        .egg-wrapper {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .egg-outer {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d35400, #e67e22, #f39c12);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 30px rgba(255,255,255,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .egg-outer.open {
+            transform: translateY(-85px) rotate(-15deg) scale(0.85);
+            opacity: 0.35;
+        }
+
+        .secret-inside {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 230px;
+            height: 230px;
+            background: radial-gradient(circle, #2a0845 0%, #150024 100%);
+            border-radius: 50%;
+            border: 2px dashed var(--neon-gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            z-index: 1;
+            box-shadow: 0 0 40px rgba(255, 190, 11, 0.4);
+        }
+
+        .secret-inside i {
+            font-size: 2.8rem;
+            color: var(--neon-gold);
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 12px var(--neon-gold));
+        }
+
+        .secret-inside span {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .surprise-info h3 {
+            font-size: 2rem;
+            color: var(--neon-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 190, 11, 0.4);
+        }
+
+        .surprise-info p {
+            color: var(--text-dim);
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+        }
+
+        .btn-toggle-surprise {
+            background: linear-gradient(135deg, var(--neon-gold), var(--neon-orange));
+            color: #070913;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 190, 11, 0.6);
+            transition: all 0.3s;
+        }
+
+        .btn-toggle-surprise:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 190, 11, 0.9);
+        }
+
+        /* Galería */
+        .gallery-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1300px;
+            margin: 4rem auto 7rem;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header .tag {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            color: #ffffff;
+        }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .filter-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-dim);
+            padding: 0.7rem 1.6rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: var(--blur);
+        }
+
+        .filter-chip:hover {
+            color: #ffffff;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .filter-chip.active {
+            background: linear-gradient(135deg, var(--neon-cyan), #0077b6);
+            color: #070913;
+            font-weight: 800;
+            border-color: transparent;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+        }
+
+        /* Cuadrícula de Tarjetas */
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2.8rem;
+        }
+
+        .craft-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border-highlight);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: var(--blur);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .craft-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .craft-card:hover {
+            transform: translateY(-14px) scale(1.015);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 240, 255, 0.35);
+        }
+
+        .craft-card:hover::after {
+            opacity: 1;
+        }
+
+        .card-media {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            filter: brightness(0.92) contrast(1.08);
+        }
+
+        .craft-card:hover .card-media img {
+            transform: scale(1.12);
+            filter: brightness(1.05);
+        }
+
+        .badge-type {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(7, 9, 19, 0.85);
+            border: 1px solid var(--neon-magenta);
+            color: var(--neon-magenta);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        }
+
+        .badge-magic {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(5, 255, 161, 0.15);
+            border: 1px solid var(--neon-emerald);
+            color: var(--neon-emerald);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+
+        .card-body {
+            padding: 2.2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-size: 1.55rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .craft-card:hover .card-body h3 {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+        }
+
+        .card-body p {
+            color: var(--text-dim);
+            font-size: 0.98rem;
+            margin-bottom: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .attributes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .attr-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+
+        .attr-item i {
+            color: var(--neon-orange);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Homenaje */
+        .tribute-section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 1.5rem;
+            background: linear-gradient(180deg, transparent, rgba(114, 9, 183, 0.08), transparent);
+        }
+
+        .tribute-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .tribute-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .tribute-box:hover {
+            border-color: var(--neon-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 190, 11, 0.2);
+        }
+
+        .tribute-icon {
+            font-size: 3rem;
+            margin-bottom: 1.4rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-gold), var(--neon-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 190, 11, 0.3));
+        }
+
+        .tribute-box h4 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .tribute-box p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4rem 1.5rem 2.5rem;
+            text-align: center;
+            background: rgba(7, 9, 19, 0.9);
+        }
+
+        .footer-quote {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.4rem;
+            color: var(--neon-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 190, 11, 0.5);
+        }
+
+        .footer-sub {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .surprise-card { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .craft-grid { grid-template-columns: 1fr; }
+            .hero { min-height: 75vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Luces de ambiente flotantes -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="brand">
+                <i class="fa-solid fa-gem"></i>
+                <span>Ilobasco • Joya del Barro</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sorpresa">La Sorpresa</a></li>
+                <li><a href="#galeria">Obras Maestras</a></li>
+                <li><a href="#legado">Legado y Alma</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero / Portada -->
+    <section class="hero" id="inicio">
+        <div class="city-badge">
+            <i class="fa-solid fa-location-dot"></i> Cabañas, El Salvador • Capital Alfarera
+        </div>
+        <h1 class="hero-title">El Prodigio Esculpido en Barro</h1>
+        <p class="hero-desc">
+            No se trata de objetos comunes; en Ilobasco, las manos artesanas obran el milagro de encerrar mundos enteros en una cáscara de nuez y transformar la arcilla en memoria viva de nuestro pueblo.
+        </p>
+        <div class="hero-buttons">
+            <a href="#sorpresa" class="btn-neon-main">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Abrir una Sorpresa
+            </a>
+            <a href="#galeria" class="btn-neon-secondary">
+                <i class="fa-solid fa-eye"></i> Contemplar Obras
+            </a>
+        </div>
+    </section>
+
+    <!-- Experiencia Interactiva: La Sorpresa -->
+    <section class="interactive-section" id="sorpresa">
+        <div class="surprise-card">
+            <div class="surprise-visual">
+                <div class="egg-wrapper">
+                    <div class="secret-inside">
+                        <i class="fa-solid fa-store"></i>
+                        <span>¡Una Pupusería Típica en Miniatura!</span>
+                        <p style="font-size: 0.75rem; color: #a5b4fc; margin-top: 5px;">Hecha a pulso con espina de maguey</p>
+                    </div>
+                    <div class="egg-outer" id="eggCover" onclick="toggleSurprise()">
+                        <i class="fa-solid fa-lock" style="font-size: 2.2rem; color: #fff; margin-bottom: 8px;"></i>
+                        <span style="font-weight: 700; color: #fff; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">
+                            Cáscara de Barro
+                        </span>
+                        <span style="font-size: 0.75rem; color: #ffeaa7;">Haz clic para destapar</span>
+                    </div>
+                </div>
+            </div>
+            <div class="surprise-info">
+                <h3>El Misterio de "Las Sorpresas"</h3>
+                <p>
+                    Las <strong>sorpresas</strong> son el pináculo del ingenio ilobasquense: pequeñas frutas, huevos o nueces de barro pintado que tienen una tapa removible. Al levantarse, revelan nacimientos, bodas campesinas o vendedoras de mercado con detalles asombrosamente diminutos.
+                </p>
+                <button class="btn-toggle-surprise" onclick="toggleSurprise()">
+                    <i class="fa-solid fa-hand-sparkles"></i> <span id="btnText">Destapar la Sorpresa</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Obras -->
+    <main class="gallery-wrap" id="galeria">
+        <div class="section-header">
+            <span class="tag">Exposición Cultural</span>
+            <h2>Obras de Belleza Inmortal</h2>
+            <p style="color: var(--text-dim); max-width: 680px; margin: 0.8rem auto 0;">
+                Un homenaje a la paciencia, la precisión microscópica y el orgullo de nuestras tradiciones.
+            </p>
+        </div>
+
+        <div class="filters">
+            <button class="filter-chip active" onclick="filterItems('todos')">Todas las Variantes</button>
+            <button class="filter-chip" onclick="filterItems('miniaturas')">Miniaturas y Sorpresas</button>
+            <button class="filter-chip" onclick="filterItems('costumbrista')">Escultura Costumbrista</button>
+            <button class="filter-chip" onclick="filterItems('tradicional')">Alfarería Rústica y Sagrada</button>
+        </div>
+
+        <div class="craft-grid" id="craftGrid">
+
+            <!-- 1. Miniatura -->
+            <article class="craft-card" data-category="miniaturas">
+                <div class="card-media">
+                    <span class="badge-type">Micro-Escultura</span>
+                    <span class="badge-magic"><i class="fa-solid fa-microscope"></i> Escala Milimétrica</span>
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Miniatura de barro sorpresa">
+                </div>
+                <div class="card-body">
+                    <h3>La Sorpresa en Cáscara de Nuez</h3>
+                    <p>
+                        Apenas mide dos centímetros, pero dentro guarda a una tejedora, su telar y canastas con hilos de colores. Cada pieza se esculpe utilizando espinas de maguey y pelos finos como pincel.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-feather-pointed"></i>
+                            <span><strong>Instrumentos:</strong> Espinas de maguey silvestre</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-paint-brush"></i>
+                            <span><strong>Pintura:</strong> Policromía con pigmentos naturales fijados a fuego</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Costumbrismo -->
+            <article class="craft-card" data-category="costumbrista">
+                <div class="card-media">
+                    <span class="badge-type">Costumbrismo</span>
+                    <span class="badge-magic"><i class="fa-solid fa-heart"></i> Rostros del Pueblo</span>
+                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80" alt="Vendedora en barro">
+                </div>
+                <div class="card-body">
+                    <h3>La Canastera de Frutas Tropicales</h3>
+                    <p>
+                        Modelado figurativo que rinde tributo a las mujeres que viajan al mercado. Lleva en su canasto mangos maduros, papayas y jocotes moldeados uno a uno con infinita ternura.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-hands"></i>
+                            <span><strong>Moldeado:</strong> 100% a mano sin intervención de moldes</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-sun"></i>
+                            <span><strong>Expresión:</strong> Reflejo de la dignidad del campo salvadoreño</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Nacimientos en Miniatura -->
+            <article class="craft-card" data-category="miniaturas">
+                <div class="card-media">
+                    <span class="badge-type">Folk Religioso</span>
+                    <span class="badge-magic"><i class="fa-solid fa-star"></i> Fama en América Latina</span>
+                    <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80" alt="Nacimiento en miniatura">
+                </div>
+                <div class="card-body">
+                    <h3>Nacimientos en Grano de Café</h3>
+                    <p>
+                        La Sagrada Familia tallada sobre la superficie de un grano de café o dentro de una cáscara de pistacho. Una tradición que ha recorrido museos en el Vaticano, México y España.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span><strong>Dimensión:</strong> Figuras menores a 5 milímetros de alto</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-award"></i>
+                            <span><strong>Reconocimiento:</strong> Patrimonio cultural inmaterial de Cuscatlán</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4. Cántaros Rústicos -->
+            <article class="craft-card" data-category="tradicional">
+                <div class="card-media">
+                    <span class="badge-type">Barro Rojo Rústico</span>
+                    <span class="badge-magic"><i class="fa-solid fa-water"></i> Agua Fresca y Vida</span>
+                    <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80" alt="Tinaja de barro rojo">
+                </div>
+                <div class="card-body">
+                    <h3>El Cántaro Poroso de Agua Viva</h3>
+                    <p>
+                        El barro rojo cocido a leña mantiene el agua dulce y fresca sin necesidad de refrigeración gracias a la evaporación a través de sus poros microscópicos naturales.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-fire-burner"></i>
+                            <span><strong>Horno:</strong> Quemado en hornos de bóveda con leña seca</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-mountain"></i>
+                            <span><strong>Materia Prima:</strong> Arcilla extraída de los cerros de Cabañas</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5. Torito Pinto -->
+            <article class="craft-card" data-category="costumbrista">
+                <div class="card-media">
+                    <span class="badge-type">Danza Tradicional</span>
+                    <span class="badge-magic"><i class="fa-solid fa-masks-theater"></i> Fiesta y Color</span>
+                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=800&q=80" alt="Danzante del torito pinto">
+                </div>
+                <div class="card-body">
+                    <h3>El Danzante del Torito Pinto</h3>
+                    <p>
+                        Figura en barro policromado que inmortaliza el son de la danza folclórica más alegre de El Salvador, con su armazón decorado y cohetes de luces esculpidos en pasta.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-music"></i>
+                            <span><strong>Folclore:</strong> Tradición de moros, cristianos y mestizaje</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-palette"></i>
+                            <span><strong>Pigmento:</strong> Colores intensos fijados con barniz satinado</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6. Macetas con Soles en Relieve -->
+            <article class="craft-card" data-category="tradicional">
+                <div class="card-media">
+                    <span class="badge-type">Modelado Ornamental</span>
+                    <span class="badge-magic"><i class="fa-solid fa-sun"></i> Calidez Cuscatleca</span>
+                    <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=800&q=80" alt="Mortero y vasija ornamental">
+                </div>
+                <div class="card-body">
+                    <h3>Sol Radiante en Relieve de Barro</h3>
+                    <p>
+                        Platos y vasijas decoradas con soles sonrientes, iguanas y flores en alto relieve que decoran los corredores y patios de las casas salvadoreñas con calidez inmortal.
+                    </p>
+                    <div class="attributes-list">
+                        <div class="attr-item">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                            <span><strong>Técnica:</strong> Pastillaje y esgrafiado sobre arcilla fresca</span>
+                        </div>
+                        <div class="attr-item">
+                            <i class="fa-solid fa-house"></i>
+                            <span><strong>Simbolismo:</strong> Luz solar y bienvenida al visitante</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Legado -->
+    <section class="tribute-section" id="legado">
+        <div class="tribute-grid">
+            <div class="tribute-box">
+                <i class="fa-solid fa-hand-holding-heart tribute-icon"></i>
+                <h4>Dominga Herrera (1911-1982)</h4>
+                <p>La ilustre artesana ilobasquense que sorprendió al mundo al inventar las miniaturas en la década de 1930, siendo elogiada por diplomáticos y museos internacionales.</p>
+            </div>
+            <div class="tribute-box">
+                <i class="fa-solid fa-fire-flame-curved tribute-icon"></i>
+                <h4>El Crisol del Horno de Leña</h4>
+                <p>La alquimia donde la arcilla cruda se somete a más de 800 °C, otorgándole la firmeza eterna que guarda la memoria de nuestras abuelas alfareras.</p>
+            </div>
+            <div class="tribute-box">
+                <i class="fa-solid fa-eye-dropper tribute-icon"></i>
+                <h4>El Pincel del Alma</h4>
+                <p>Paciencia casi meditativa: cada punto de luz en los ojos de una muñequita de barro requiere un pulso firme y un amor profundo por el oficio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p class="footer-quote">"En Ilobasco, las manos del alfarero no amasan tierra: moldean el alma de la patria."</p>
+        <p class="footer-sub">
+            Exposición interactiva consagrada a la memoria y belleza de los artesanos de Ilobasco, Cabañas • El Salvador
+        </p>
+    </footer>
+
+    <!-- Script de interacción -->
+    <script>
+        let isOpen = false;
+        function toggleSurprise() {
+            const egg = document.getElementById('eggCover');
+            const btn = document.getElementById('btnText');
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                egg.classList.add('open');
+                btn.textContent = 'Volver a Cerrar la Sorpresa';
+            } else {
+                egg.classList.remove('open');
+                btn.textContent = 'Destapar la Sorpresa';
+            }
+        }
+
+        function filterItems(category) {
+            const chips = document.querySelectorAll('.filter-chip');
+            chips.forEach(chip => chip.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.craft-card');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'todos' || cardCat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
